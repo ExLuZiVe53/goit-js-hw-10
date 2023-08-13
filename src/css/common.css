@@ -51,6 +51,19 @@ span.value {
   background-color: #fcfcfc;
 }
 
+.flex {
+  display: flex;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  opacity: 0.8;
+  background-color: #fff;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 /* loader-spiner */
 
 .loader-spiner {

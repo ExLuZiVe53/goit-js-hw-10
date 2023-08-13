@@ -71,7 +71,7 @@ function createListMarkup(arr) {
 function createMarkup(data) {
   const cardMarkup = data
     .map(el => {
-      return `<div><img src="${el.url}" alt="${el.breeds[0].name}" width="500"/><h2>${el.breeds[0].name}</h2><p>${el.breeds[0].description}</p><h3>Temperament</h3><p>${el.breeds[0].temperament}</p></div>`;
+      return `<div class="flex"><img src="${el.url}" alt="${el.breeds[0].name}" width="500"/><div class="wrapper"><h2>${el.breeds[0].name}</h2><p>${el.breeds[0].description}</p><h3>Temperament</h3><p>${el.breeds[0].temperament}</p></div></div>`;
     })
     .join('');
   refs.infoCat.innerHTML = cardMarkup;
