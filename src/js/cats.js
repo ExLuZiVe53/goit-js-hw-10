@@ -1,3 +1,4 @@
+import '../css/common.css';
 import SlimSelect from 'slim-select';
 import '/node_modules/slim-select/dist/slimselect.css';
 import Notiflix from 'notiflix';
@@ -7,12 +8,14 @@ import { fetchBreedsAuto, fetchCatByBreed } from './cat-api';
 // axios.defaults.headers.common['x-api-key'] =
 //   'live_xHJI2SqFGgGKcxowQZaISzhfoylqpxintocK4n97CiiSy4vIKaPZq3xGgkqRWlbP';
 
+console.log('Hello');
+
 const refs = {
-  select: document.querySelector('breed-select'),
+  select: document.querySelector('.breed-select'),
   loader: document.querySelector('.loader'),
   error: document.querySelector('.error'),
   infoCat: document.querySelector('.cat-info'),
-  spiner: document.querySelector('.loader-spiner'),
+  // spiner: document.querySelector('.loader-spiner'),
 };
 
 function slimSelectEl() {
@@ -31,14 +34,14 @@ refs.error.classList.add('is-hidden');
 refs.infoCat.classList.add('is-hidden');
 refs.select.classList.add('is-hidden');
 
-fetchBreeds()
+fetchBreedsAuto()
   .then(data => {
-    refs.select.innerHTML = createList(data);
+    refs.select.innerHTML = createListMarkup(data);
     slimSelectEl();
     refs.select.classList.remove('is-hidden');
     refs.loader.classList.replace('loader', 'is-hidden');
   })
-  .catch(onFetchError);
+  .catch(onError);
 
 refs.select.addEventListener('change', onSelect);
 
@@ -65,12 +68,10 @@ function createListMarkup(arr) {
     .join('');
 }
 
-console.log(createListMarkup(arr));
-
 function createMarkup(data) {
   const cardMarkup = data
     .map(el => {
-      return `<li><img src="${el.url}" alt="${el.breeds[0].name}" width="400"/><h2>${el.breeds[0].name}</h2><p>${el.breeds[0].description}</p><h3>Temperament</h3><p>${el.breeds[0].temperament}</p></li>`;
+      return `<div><img src="${el.url}" alt="${el.breeds[0].name}" width="500"/><h2>${el.breeds[0].name}</h2><p>${el.breeds[0].description}</p><h3>Temperament</h3><p>${el.breeds[0].temperament}</p></div>`;
     })
     .join('');
   refs.infoCat.innerHTML = cardMarkup;

@@ -14,7 +14,7 @@ body {
 
 img {
   display: block;
-  max-width: 100%;
+  max-width: 80%;
 }
 
 .timer {
@@ -47,11 +47,8 @@ span.value {
 .cat-info {
   margin-top: 20px;
   padding: 20px;
-  display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px;
-  background-color: #ff3d00;
+  background-color: #fcfcfc;
 }
 
 /* loader-spiner */
